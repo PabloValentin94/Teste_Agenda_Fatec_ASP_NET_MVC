@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste_Agenda_Fatec", "Teste_Agenda_Fatec\Teste_Agenda_Fatec.csproj", "{5C953F30-768F-454A-A909-105B0B60A24D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C953F30-768F-454A-A909-105B0B60A24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C953F30-768F-454A-A909-105B0B60A24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C953F30-768F-454A-A909-105B0B60A24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C953F30-768F-454A-A909-105B0B60A24D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86799430-3075-48D2-91A8-73EB968075E6}
+	EndGlobalSection
+EndGlobal
