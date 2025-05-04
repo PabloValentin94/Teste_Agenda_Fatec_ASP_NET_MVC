@@ -10,6 +10,10 @@ namespace Teste_Agenda_Fatec.Models
         [Display(Name = "ID")]
         [Column(TypeName = "INT")]
         [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [Column(TypeName = "INT")]
         public int Quantidade { get; set; }
 
         [Required]
