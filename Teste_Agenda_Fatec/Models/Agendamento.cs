@@ -53,12 +53,15 @@ namespace Teste_Agenda_Fatec.Models
         public int AprovadorId { get; set; }
 
         [Display(Name = "Sala")]
+        [NotMapped]
         public Sala? Sala { get; set; }
 
         [Display(Name = "Requisitor")]
+        [NotMapped]
         public Usuario? Requisitor { get; set; }
 
         [Display(Name = "Aprovador")]
+        [NotMapped]
         public Usuario? Aprovador { get; set; }
 
     }

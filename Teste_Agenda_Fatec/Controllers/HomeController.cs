@@ -1,7 +1,8 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 using Teste_Agenda_Fatec.Models;
+
+using System.Diagnostics;
 
 namespace Teste_Agenda_Fatec.Controllers;
 
@@ -19,7 +20,7 @@ public class HomeController : Controller
 
     /*
      
-        /Home ou /Home/Index    
+        /Home ou /Home/Index
 
     */
 
@@ -32,7 +33,7 @@ public class HomeController : Controller
 
     /*
      
-        /Home/Equipe    
+        /Home/Equipe
 
     */
 
@@ -45,7 +46,7 @@ public class HomeController : Controller
 
     /*
      
-        /Home/Ajuda    
+        /Home/Ajuda
 
     */
 

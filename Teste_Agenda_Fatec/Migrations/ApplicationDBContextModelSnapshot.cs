@@ -55,15 +55,11 @@ namespace Teste_Agenda_Fatec.Migrations
                         .HasColumnType("INT");
 
                     b.Property<string>("Situacao")
-                        .HasColumnType("ENUM(\"Pendente\", \"Aprovado\", \"Negado\")");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("ENUM(\"Pendente\", \"Aprovado\", \"Negado\")")
+                        .HasDefaultValue("Pendente");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AprovadorId");
-
-                    b.HasIndex("RequisitorId");
-
-                    b.HasIndex("SalaId");
 
                     b.ToTable("Agendamentos");
                 });
@@ -77,11 +73,15 @@ namespace Teste_Agenda_Fatec.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("TINYINT(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TINYINT(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Descricao")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(255)
-                        .HasColumnType("VARCHAR(255)");
+                        .HasColumnType("VARCHAR(255)")
+                        .HasDefaultValue("Nenhuma descrição.");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -102,7 +102,9 @@ namespace Teste_Agenda_Fatec.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("TINYINT(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TINYINT(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -123,11 +125,15 @@ namespace Teste_Agenda_Fatec.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("TINYINT(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TINYINT(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Descricao")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(255)
-                        .HasColumnType("VARCHAR(255)");
+                        .HasColumnType("VARCHAR(255)")
+                        .HasDefaultValue("Nenhuma descrição.");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -158,10 +164,6 @@ namespace Teste_Agenda_Fatec.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EquipamentoId");
-
-                    b.HasIndex("SalaId");
-
                     b.ToTable("Itens");
                 });
 
@@ -174,15 +176,19 @@ namespace Teste_Agenda_Fatec.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("TINYINT(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TINYINT(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("BlocoId")
                         .HasColumnType("INT");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(255)
-                        .HasColumnType("VARCHAR(255)");
+                        .HasColumnType("VARCHAR(255)")
+                        .HasDefaultValue("Nenhuma descrição.");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -195,11 +201,11 @@ namespace Teste_Agenda_Fatec.Migrations
                         .HasColumnType("VARCHAR(5)");
 
                     b.Property<string>("Status_Atual")
-                        .HasColumnType("ENUM(\"Disponível\", \"Em uso\", \"Indisponível\")");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("ENUM(\"Disponível\", \"Em uso\", \"Indisponível\")")
+                        .HasDefaultValue("Disponível");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BlocoId");
 
                     b.ToTable("Salas");
                 });
@@ -213,10 +219,14 @@ namespace Teste_Agenda_Fatec.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Administrador")
-                        .HasColumnType("TINYINT(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TINYINT(1)")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("TINYINT(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TINYINT(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("CargoId")
                         .HasColumnType("INT");
@@ -238,77 +248,7 @@ namespace Teste_Agenda_Fatec.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CargoId");
-
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("Teste_Agenda_Fatec.Models.Agendamento", b =>
-                {
-                    b.HasOne("Teste_Agenda_Fatec.Models.Usuario", "Aprovador")
-                        .WithMany()
-                        .HasForeignKey("AprovadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Teste_Agenda_Fatec.Models.Usuario", "Requisitor")
-                        .WithMany()
-                        .HasForeignKey("RequisitorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Teste_Agenda_Fatec.Models.Sala", "Sala")
-                        .WithMany()
-                        .HasForeignKey("SalaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Aprovador");
-
-                    b.Navigation("Requisitor");
-
-                    b.Navigation("Sala");
-                });
-
-            modelBuilder.Entity("Teste_Agenda_Fatec.Models.Item", b =>
-                {
-                    b.HasOne("Teste_Agenda_Fatec.Models.Equipamento", "Equipamento")
-                        .WithMany()
-                        .HasForeignKey("EquipamentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Teste_Agenda_Fatec.Models.Sala", "Sala")
-                        .WithMany()
-                        .HasForeignKey("SalaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Equipamento");
-
-                    b.Navigation("Sala");
-                });
-
-            modelBuilder.Entity("Teste_Agenda_Fatec.Models.Sala", b =>
-                {
-                    b.HasOne("Teste_Agenda_Fatec.Models.Bloco", "Bloco")
-                        .WithMany()
-                        .HasForeignKey("BlocoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Bloco");
-                });
-
-            modelBuilder.Entity("Teste_Agenda_Fatec.Models.Usuario", b =>
-                {
-                    b.HasOne("Teste_Agenda_Fatec.Models.Cargo", "Cargo")
-                        .WithMany()
-                        .HasForeignKey("CargoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cargo");
                 });
 #pragma warning restore 612, 618
         }

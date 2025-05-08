@@ -43,6 +43,7 @@ namespace Teste_Agenda_Fatec.Models
         public int BlocoId { get; set; }
 
         [Display(Name = "Bloco")]
+        [NotMapped]
         public Bloco? Bloco { get; set; }
 
     }

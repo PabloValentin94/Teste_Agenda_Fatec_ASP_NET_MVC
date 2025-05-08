@@ -1,0 +1,65 @@
+﻿@model Usuario
+
+@{
+
+	Layout = null;
+
+}
+
+<!-- HTML -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Login | Agenda Fatec </title>
+
+        <link rel="stylesheet" href="~/Teste_Agenda_Fatec.styles.css" asp-append-version="true" />
+
+        <link rel="stylesheet" type="text/css" href="~/css/Acesso.css" asp-append-version="true"/>
+
+	</head>
+
+	<body>
+
+		<main>
+
+            <div id="form">
+
+                <form asp-action="Login">
+
+                    <figure> <img src="~/img/Storyset/Login.svg" alt="Login"> </figure>
+
+                    <section id="data">
+
+                        <label asp-for="Email"> Digite seu e-mail institucional: </label>
+                        <input asp-for="Email" type="email" id="email" maxlength="100" autocomplete="off" required>
+
+                        <label asp-for="Senha"> Digite sua senha do Agenda Fatec: </label>
+                        <input asp-for="Senha" type="password" id="senha" maxlength="20" required>
+
+                        <div id="buttons">
+
+                            <a asp-controller="Home" asp-action="Index"> Cancelar </a>
+                            <button type="reset"> Limpar </button>
+                            <button type="submit"> Cadastrar </button>
+
+                        </div>
+
+                        <a id="register" asp-action="Cadastro"> Não possui um cadastro? Clique aqui. </a>
+
+                    </section>
+
+                </form>
+
+            </div>
+
+		</main>
+
+	</body>
+
+</html>

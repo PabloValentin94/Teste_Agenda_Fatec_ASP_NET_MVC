@@ -27,9 +27,11 @@ namespace Teste_Agenda_Fatec.Models
         public int EquipamentoId { get; set; }
 
         [Display(Name = "Sala")]
+        [NotMapped]
         public Sala? Sala { get; set; }
 
         [Display(Name = "Equipamento")]
+        [NotMapped]
         public Equipamento? Equipamento { get; set; }
 
     }

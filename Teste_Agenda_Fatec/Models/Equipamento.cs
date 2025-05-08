@@ -20,7 +20,7 @@ namespace Teste_Agenda_Fatec.Models
         [Display(Name = "Descrição")]
         [Column(TypeName = "VARCHAR(255)")]
         [StringLength(255, ErrorMessage = "O número máximo de caracteres permitidos é 255.")]
-        public string? Descricao { get; set; }
+        public string? Descricao { get; set; } = "Nenhuma descrição.";
 
         [Required]
         [Column(TypeName = "TINYINT(1)")]

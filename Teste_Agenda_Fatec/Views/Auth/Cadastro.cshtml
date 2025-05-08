@@ -1,0 +1,92 @@
+﻿@model Usuario
+
+@{
+
+	Layout = null;
+
+}
+
+<!-- HTML -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Cadastro | Agenda Fatec </title>
+
+        <link rel="stylesheet" href="~/Teste_Agenda_Fatec.styles.css" asp-append-version="true" />
+
+        <link rel="stylesheet" type="text/css" href="~/css/Acesso.css" asp-append-version="true"/>
+
+    </head>
+
+    <body>
+
+	    <main>
+
+            <div id="form">
+
+                <form asp-action="Cadastro">
+
+                    <figure> <img src="~/img/Storyset/Cadastro.svg" alt="Cadastro"> </figure>
+
+                    <section id="data">
+
+                        <label asp-for="Nome"> Digite seu nome completo: </label>
+                        <input asp-for="Nome" type="text" id="nome" maxlength="255" autocomplete="off" required>
+
+                        <label asp-for="Email"> Digite seu e-mail institucional: </label>
+                        <input asp-for="Email" type="email" id="email" maxlength="100" autocomplete="off" required>
+
+                        <label asp-for="CargoId"> Defina sua relação com a instituição de ensino: </label>
+                        <select asp-for="CargoId" id="fk_cargo" required>
+
+                            @foreach (Cargo cargo in ViewBag.Cargos)
+                            {
+
+                                if (cargo.Ativo)
+                                {
+
+                                    <option value="@cargo.Id"> @cargo.Nome </option>
+
+                                }
+
+                            }
+
+                        </select>
+
+                        <label asp-for="Senha"> Crie uma senha: </label>
+                        <input asp-for="Senha" type="password" id="senha" minlength="4" maxlength="20" required>
+
+                        <label for="confirmacao_senha"> Confirme sua senha: </label>
+                        <input type="password" id="confirmacao_senha" name="confirmacao_senha" minlength="4" maxlength="20" required>
+
+                        <input asp-for="Administrador" type="hidden" />
+
+                        <input asp-for="Ativo" type="hidden" />
+
+                        <div id="buttons">
+
+                            <a asp-controller="Home" asp-action="Index"> Cancelar </a>
+                            <button type="reset"> Limpar </button>
+                            <button type="submit"> Cadastrar </button>
+
+                        </div>
+
+                        <a id="register" asp-action="Login"> Já possui um cadastro? Clique aqui. </a>
+
+                    </section>
+
+                </form>
+
+            </div>
+
+	    </main>
+
+    </body>
+
+</html>

@@ -41,6 +41,7 @@ namespace Teste_Agenda_Fatec.Models
         public int CargoId { get; set; }
 
         [Display(Name = "Cargo")]
+        [NotMapped]
         public Cargo? Cargo { get; set; }
 
     }
