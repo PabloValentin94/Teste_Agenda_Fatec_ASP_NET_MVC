@@ -26,39 +26,43 @@
 
 	<body>
 
-		<main>
+		<div id="container">
 
-            <div id="form">
+            <main>
 
-                <form asp-action="Login">
+                <div id="form">
 
-                    <figure> <img src="~/img/Storyset/Login.svg" alt="Login"> </figure>
+                    <form asp-action="Login">
 
-                    <section id="data">
+                        <figure> <img src="~/img/Storyset/Login.svg" alt="Login"> </figure>
 
-                        <label asp-for="Email"> Digite seu e-mail institucional: </label>
-                        <input asp-for="Email" type="email" id="email" maxlength="100" autocomplete="off" required>
+                        <section id="data">
 
-                        <label asp-for="Senha"> Digite sua senha do Agenda Fatec: </label>
-                        <input asp-for="Senha" type="password" id="senha" maxlength="20" required>
+                            <label asp-for="Email"> Digite seu e-mail institucional: </label>
+                            <input asp-for="Email" type="email" id="email" maxlength="100" autocomplete="off" required>
 
-                        <div id="buttons">
+                            <label asp-for="Senha"> Digite sua senha do Agenda Fatec: </label>
+                            <input asp-for="Senha" type="password" id="senha" maxlength="20" required>
 
-                            <a asp-controller="Home" asp-action="Index"> Cancelar </a>
-                            <button type="reset"> Limpar </button>
-                            <button type="submit"> Cadastrar </button>
+                            <div id="buttons">
 
-                        </div>
+                                <a asp-controller="Home" asp-action="Index"> Cancelar </a>
+                                <button type="reset"> Limpar </button>
+                                <button type="submit"> Cadastrar </button>
 
-                        <a id="register" asp-action="Cadastro"> Não possui um cadastro? Clique aqui. </a>
+                            </div>
 
-                    </section>
+                            <a id="register" asp-action="Cadastro"> Não possui um cadastro? Clique aqui. </a>
 
-                </form>
+                        </section>
 
-            </div>
+                    </form>
 
-		</main>
+                </div>
+
+            </main>
+
+		</div>
 
 	</body>
 

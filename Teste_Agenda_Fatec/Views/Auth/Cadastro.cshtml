@@ -26,66 +26,70 @@
 
     <body>
 
-	    <main>
+        <div id="container">
 
-            <div id="form">
+	        <main>
 
-                <form asp-action="Cadastro">
+                <div id="form">
 
-                    <figure> <img src="~/img/Storyset/Cadastro.svg" alt="Cadastro"> </figure>
+                    <form asp-action="Cadastro">
 
-                    <section id="data">
+                        <figure> <img src="~/img/Storyset/Cadastro.svg" alt="Cadastro"> </figure>
 
-                        <label asp-for="Nome"> Digite seu nome completo: </label>
-                        <input asp-for="Nome" type="text" id="nome" maxlength="255" autocomplete="off" required>
+                        <section id="data">
 
-                        <label asp-for="Email"> Digite seu e-mail institucional: </label>
-                        <input asp-for="Email" type="email" id="email" maxlength="100" autocomplete="off" required>
+                            <label asp-for="Nome"> Digite seu nome completo: </label>
+                            <input asp-for="Nome" type="text" id="nome" maxlength="255" autocomplete="off" required>
 
-                        <label asp-for="CargoId"> Defina sua relação com a instituição de ensino: </label>
-                        <select asp-for="CargoId" id="fk_cargo" required>
+                            <label asp-for="Email"> Digite seu e-mail institucional: </label>
+                            <input asp-for="Email" type="email" id="email" maxlength="100" autocomplete="off" required>
 
-                            @foreach (Cargo cargo in ViewBag.Cargos)
-                            {
+                            <label asp-for="CargoId"> Defina sua relação com a instituição de ensino: </label>
+                            <select asp-for="CargoId" id="fk_cargo" required>
 
-                                if (cargo.Ativo)
+                                @foreach (Cargo cargo in ViewBag.Cargos)
                                 {
 
-                                    <option value="@cargo.Id"> @cargo.Nome </option>
+                                    if (cargo.Ativo)
+                                    {
+
+                                        <option value="@cargo.Id"> @cargo.Nome </option>
+
+                                    }
 
                                 }
 
-                            }
+                            </select>
 
-                        </select>
+                            <label asp-for="Senha"> Crie uma senha: </label>
+                            <input asp-for="Senha" type="password" id="senha" minlength="4" maxlength="20" required>
 
-                        <label asp-for="Senha"> Crie uma senha: </label>
-                        <input asp-for="Senha" type="password" id="senha" minlength="4" maxlength="20" required>
+                            <label for="confirmacao_senha"> Confirme sua senha: </label>
+                            <input type="password" id="confirmacao_senha" name="confirmacao_senha" minlength="4" maxlength="20" required>
 
-                        <label for="confirmacao_senha"> Confirme sua senha: </label>
-                        <input type="password" id="confirmacao_senha" name="confirmacao_senha" minlength="4" maxlength="20" required>
+                            <input asp-for="Administrador" type="hidden" />
 
-                        <input asp-for="Administrador" type="hidden" />
+                            <input asp-for="Ativo" type="hidden" />
 
-                        <input asp-for="Ativo" type="hidden" />
+                            <div id="buttons">
 
-                        <div id="buttons">
+                                <a asp-controller="Home" asp-action="Index"> Cancelar </a>
+                                <button type="reset"> Limpar </button>
+                                <button type="submit"> Cadastrar </button>
 
-                            <a asp-controller="Home" asp-action="Index"> Cancelar </a>
-                            <button type="reset"> Limpar </button>
-                            <button type="submit"> Cadastrar </button>
+                            </div>
 
-                        </div>
+                            <a id="register" asp-action="Login"> Já possui um cadastro? Clique aqui. </a>
 
-                        <a id="register" asp-action="Login"> Já possui um cadastro? Clique aqui. </a>
+                        </section>
 
-                    </section>
+                    </form>
 
-                </form>
+                </div>
 
-            </div>
+	        </main>
 
-	    </main>
+        </div>
 
     </body>
 

@@ -39,11 +39,9 @@ namespace Teste_Agenda_Fatec.Data
 
             model_builder.Entity<Sala>().Property(sala => sala.Ativo).HasDefaultValue(true);
 
-            model_builder.Entity<Usuario>()
-                         .Property(usuario => usuario.Administrador).HasDefaultValue(false);
+            model_builder.Entity<Usuario>().Property(usuario => usuario.Administrador).HasDefaultValue(false);
 
-            model_builder.Entity<Usuario>()
-                         .Property(usuario => usuario.Ativo).HasDefaultValue(true);
+            model_builder.Entity<Usuario>().Property(usuario => usuario.Ativo).HasDefaultValue(true);
 
             // Textos.
 
