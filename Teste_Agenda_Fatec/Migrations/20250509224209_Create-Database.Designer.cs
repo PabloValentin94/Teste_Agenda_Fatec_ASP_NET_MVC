@@ -12,7 +12,7 @@ using Teste_Agenda_Fatec.Data;
 namespace Teste_Agenda_Fatec.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20250508214827_Create-Database")]
+    [Migration("20250509224209_Create-Database")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -247,7 +247,7 @@ namespace Teste_Agenda_Fatec.Migrations
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("VARCHAR(100)");
+                        .HasColumnType("CHAR(60)");
 
                     b.HasKey("Id");
 

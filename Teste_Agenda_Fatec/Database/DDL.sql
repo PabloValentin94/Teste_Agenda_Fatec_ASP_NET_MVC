@@ -24,7 +24,7 @@ CREATE TABLE Usuarios (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(255) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
-    Senha CHAR(32) NOT NULL, -- Terá algum tipo de criptografia.
+    Senha CHAR(60) NOT NULL, -- Terá algum tipo de criptografia.
     Administrador TINYINT(1) NOT NULL DEFAULT 0,
     Ativo TINYINT(1) NOT NULL DEFAULT 1,
 

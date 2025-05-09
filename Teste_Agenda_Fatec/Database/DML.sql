@@ -13,6 +13,3 @@ INSERT INTO Itens(SalaId, EquipamentoId, quantidade) VALUES(3, 1, 1),(3, 2, 20),
 INSERT INTO Itens(SalaId, EquipamentoId, quantidade) VALUES(4, 1, 2),(4, 2, 30),(4, 3, 40);
 INSERT INTO Itens(SalaId, EquipamentoId, quantidade) VALUES(5, 1, 2),(5, 2, 30),(5, 3, 40);
 INSERT INTO Itens(SalaId, EquipamentoId, quantidade) VALUES(6, 1, 2),(6, 2, 30),(6, 3, 40);
-
-INSERT INTO Usuarios(nome, email, senha, administrador, CargoId) VALUES("Pablo Valentin", "pablo.valentin@fatec.sp.gov.br", MD5("1234"), 0, 1);
-INSERT INTO Usuarios(nome, email, senha, administrador, CargoId) VALUES("Matheus", "matheus@fatec.sp.gov.br", MD5("1234"), 1, 3);

@@ -21,36 +21,44 @@ namespace Teste_Agenda_Fatec.Controllers
 
         }
 
-        /*
- 
-            GET: /Auth/Cadastro
-
-        */
+        // GET: /Auth/Cadastro
 
         public async Task<IActionResult> Cadastro()
         {
 
             ViewBag.Cargos = await _context.Cargos.ToListAsync();
 
-            return View();
+            return View(new Usuario());
 
         }
 
-        /*
-         
-            POST: /Auth/Cadastro
-
-        */
+        // POST: /Auth/Cadastro
 
         [HttpPost]
-        public async Task<IActionResult> Cadastro([Bind("Id,Nome,Email,Senha,Administrador,Ativo,CargoId")] Models.Usuario usuario, string confirmacao_senha)
+        public async Task<IActionResult> Cadastro([Bind("Id,Nome,Email,Senha,Administrador,Ativo,CargoId")] Models.Usuario usuario, string Confirmacao_Senha)
         {
 
             if (ModelState.IsValid)
             {
 
-                if (usuario.Senha == confirmacao_senha)
+                if (_context.Usuarios.Any(u => u.Email == usuario.Email))
                 {
+
+                    ViewBag.Alerta = "O e-mail passado já está em uso!";
+
+                }
+
+                else if (usuario.Senha != Confirmacao_Senha)
+                {
+
+                    ViewBag.Alerta = "As senhas passadas divergem!";
+
+                }
+
+                else
+                {
+
+                    usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
 
                     _context.Add(usuario);
 
@@ -60,24 +68,15 @@ namespace Teste_Agenda_Fatec.Controllers
 
                 }
 
-                else
-                {
-
-                    // Erro!
-
-                }
-
             }
+
+            ViewBag.Cargos = await _context.Cargos.ToListAsync();
 
             return View(usuario);
 
         }
 
-        /*
-         
-            POST: /Auth/Login
-
-        */
+        // GET: /Auth/Login
 
         public IActionResult Login()
         {
@@ -86,39 +85,50 @@ namespace Teste_Agenda_Fatec.Controllers
 
         }
 
+        // POST: /Auth/Login
+
         [HttpPost]
-        public async Task<IActionResult> Login([Bind("Nome,Email,Senha")] Models.Usuario usuario)
+        public async Task<IActionResult> Login(string Email, string Senha)
         {
 
-            if (ModelState.IsValid)
+            bool login_valido = false;
+
+            foreach (Usuario usuario in (await _context.Usuarios.ToListAsync()))
             {
 
-                var login = await _context.Usuarios.FirstOrDefaultAsync(u => u.Nome == usuario.Nome && u.Senha == usuario.Senha);
-
-                if (login != null)
+                if (Email == usuario.Email && BCrypt.Net.BCrypt.Verify(Senha, usuario.Senha))
                 {
 
-                    RedirectToAction("Index", "Home");
+                    login_valido = true;
 
-                }
-
-                else
-                {
-
-                    return NotFound();
+                    break;
 
                 }
 
             }
 
-            return View(usuario);
+            if (login_valido)
+            {
+
+                return RedirectToAction("Index", "Home");
+
+            }
+
+            else
+            {
+
+                ViewBag.Alerta = "Erro ao efetuar o login! Revise seus dados.";
+
+            }
+
+            return View();
 
         }
 
         private bool UsuarioExists(int id)
         {
 
-            return _context.Usuarios.Any(usuario => usuario.Id == id);
+            return _context.Usuarios.Any(u => u.Id == id);
 
         }
 

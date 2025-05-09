@@ -139,7 +139,7 @@ namespace Teste_Agenda_Fatec.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Email = table.Column<string>(type: "VARCHAR(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Senha = table.Column<string>(type: "VARCHAR(100)", maxLength: 20, nullable: false)
+                    Senha = table.Column<string>(type: "CHAR(60)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Administrador = table.Column<bool>(type: "TINYINT(1)", nullable: false, defaultValue: false),
                     Ativo = table.Column<bool>(type: "TINYINT(1)", nullable: false, defaultValue: true),

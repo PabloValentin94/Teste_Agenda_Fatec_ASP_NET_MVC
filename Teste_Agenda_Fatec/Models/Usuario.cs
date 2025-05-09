@@ -24,7 +24,7 @@ namespace Teste_Agenda_Fatec.Models
         public string? Email { get; set; }
 
         [Required]
-        [Column(TypeName = "VARCHAR(100)")]
+        [Column(TypeName = "CHAR(60)")]
         [StringLength(20, ErrorMessage = "O número máximo de caracteres permitidos é 20.")]
         public string? Senha { get; set; }
 

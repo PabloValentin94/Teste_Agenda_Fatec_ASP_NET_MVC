@@ -18,11 +18,7 @@ public class HomeController : Controller
 
     }
 
-    /*
-     
-        /Home ou /Home/Index
-
-    */
+    // GET: /Home ou /Home/Index
 
     public IActionResult Index()
     {
@@ -31,11 +27,7 @@ public class HomeController : Controller
 
     }
 
-    /*
-     
-        /Home/Equipe
-
-    */
+    // GET: /Home/Equipe
 
     public IActionResult Equipe()
     {
@@ -44,11 +36,7 @@ public class HomeController : Controller
 
     }
 
-    /*
-     
-        /Home/Ajuda
-
-    */
+    // GET: /Home/Ajuda
 
     public IActionResult Ajuda()
     {

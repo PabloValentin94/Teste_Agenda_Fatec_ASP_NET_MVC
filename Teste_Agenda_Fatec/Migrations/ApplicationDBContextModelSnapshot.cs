@@ -244,7 +244,7 @@ namespace Teste_Agenda_Fatec.Migrations
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("VARCHAR(100)");
+                        .HasColumnType("CHAR(60)");
 
                     b.HasKey("Id");
 
